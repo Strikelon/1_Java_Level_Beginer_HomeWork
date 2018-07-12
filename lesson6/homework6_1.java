@@ -24,14 +24,15 @@ public class homework6_1 {
             sc1.close();
             ps.close();
 
-//3. * Написать программу, которая проверяет присутствует ли указанное пользователем слово в файле.
+//3. * Написать программу, которая проверяет присутствует ли указанное пользователем слово в файле.доработал программу, теперь она ищет и словосочетания
 
-            String searchWord1="move";
+            String searchWord1="was about";
             Boolean result=false;
 
             Scanner sc2 = new Scanner(new FileInputStream("file.txt"));
-            while (sc2.hasNext()){
-                if(searchWord1.equals(sc2.next())){
+            while (sc2.hasNextLine()){
+                String temp=sc2.nextLine();
+                if(temp.indexOf(searchWord1)!=-1){
                     result=true;
                     break;
                 }
@@ -39,20 +40,21 @@ public class homework6_1 {
             sc2.close();
             System.out.println("file.txt : "+ result);
 
-//4 ** Написать метод, проверяющий, есть ли указанное слово в папке
+//4 ** Написать метод, проверяющий, есть ли указанное слово в папке (доработал программу, теперь она ищет и словосочетания)
 
             System.out.println("--------------------------");
 
             File directory = new File("papka");
-            String searchWord2="you";
+            String searchWord2="take away";
             Boolean result2=false;
 
             if(directory.exists()){
                 String[] files=directory.list();
                 for(int i=0;i<files.length;i++){
                     Scanner sc3 = new Scanner(new FileInputStream(directory.getName()+"/"+files[i]));
-                    while (sc3.hasNext()){
-                        if(searchWord2.equals(sc3.next())){
+                    while (sc3.hasNextLine()){
+                        String temp=sc3.nextLine();
+                        if(temp.indexOf(searchWord2)!=-1){
                             result2=true;
                             break;
                         }
